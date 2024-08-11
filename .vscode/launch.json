@@ -4,7 +4,7 @@
             "name": "C/C++ Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/binary_name",
+            "program": "${workspaceFolder}/vk/gpu",
             "cwd": "${fileDirname}",
             "stopAtEntry": false,
             "externalConsole": false,

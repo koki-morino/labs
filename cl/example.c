@@ -10,11 +10,11 @@ int main(void)
     cl_result = clGetPlatformIDs(0, NULL, &num_platforms);
     if (cl_result != CL_SUCCESS)
     {
-        fprintf(stderr, "Failed to get platform ID(s)");
-        return;
+        printf("Failed to get platform ID(s)\n");
+        return EXIT_FAILURE;
     }
 
-    printf("Platform(s) found %u", num_platforms);
+    printf("Platform(s) found %u\n", num_platforms);
 
     return EXIT_SUCCESS;
 }
