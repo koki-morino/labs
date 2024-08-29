@@ -1,11 +1,6 @@
 CC=gcc
 CFLAGS=-g -O0 $(shell pkg-config --cflags vulkan)
-LIBS=
-ifeq ($(OS),Windows_NT)
-    LIBS+=$(shell echo "\"${USERPROFILE}\scoop\apps\msys2\current\ucrt64\lib\libvulkan-1.dll.a\"")
-else
-    LIBS+=$(shell pkg-config --libs vulkan)
-endif
+LIBS=$(shell pkg-config --libs vulkan)
 
 SRCS=$(wildcard *.c)
 OBJS=$(patsubst %.c, %.o, $(SRCS))

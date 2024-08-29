@@ -1,1 +1,9 @@
+# C/C++
 **/*.o
+**/out
+
+# Windows
+**/*.exe
+
+# SPIR-V
+**/*.spv
