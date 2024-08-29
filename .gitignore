@@ -4,6 +4,7 @@
 
 # Windows
 **/*.exe
+**/*.dll
 
 # SPIR-V
 **/*.spv
