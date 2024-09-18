@@ -3,11 +3,13 @@
     "configurations": [
         {
             "name": "Linux",
-            "cStandard": "c11"
+            "cStandard": "c11",
+            "cppStandard": "c++17"
         },
         {
             "name": "Win32",
-            "cStandard": "c11"
+            "cStandard": "c11",
+            "cppStandard": "c++17"
         }
     ]
 }

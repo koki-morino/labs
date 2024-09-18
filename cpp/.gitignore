@@ -8,3 +8,6 @@
 
 # SPIR-V
 **/*.spv
+
+# Assembly
+**/*.bin
