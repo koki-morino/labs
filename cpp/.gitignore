@@ -1,10 +1,13 @@
 # VSCode
-**/.vscode/*
-!**/.vscode/c_cpp_properties.json
-!**/.vscode/extensions.json
+.vscode/*
+!.vscode/c_cpp_properties.json
+!.vscode/extensions.json
 
 # Visual Studio
-**/.vs/
+.vs/
 
 # vcpkg
 **/vcpkg_installed/
+
+# CMake
+out/

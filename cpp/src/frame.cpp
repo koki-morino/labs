@@ -25,9 +25,9 @@ MainFrame::MainFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title)
                      APP_NAME "の情報を表示する");
 
     wxMenuBar *menuBar = new wxMenuBar;
-    menuBar->Append(menuFile, "&ファイル");
-    menuBar->Append(menuDatabase, "&データベース");
-    menuBar->Append(menuHelp, "&ヘルプ");
+    menuBar->Append(menuFile, "&File");
+    menuBar->Append(menuDatabase, "&Database");
+    menuBar->Append(menuHelp, "&Help");
 
     SetMenuBar(menuBar);
 
@@ -79,7 +79,7 @@ void MainFrame::OnExit(wxCommandEvent &event)
 
 void MainFrame::OnAbout(wxCommandEvent &event)
 {
-    wxMessageBox("バージョン：0.1.0\nライセンス：GPLv3", APP_NAME "について",
+    wxMessageBox("Version: 1.0.0", APP_NAME "について",
                  wxOK | wxICON_INFORMATION);
 }
 
@@ -87,7 +87,7 @@ void MainFrame::OnCreateFile(wxCommandEvent &event) {}
 
 void MainFrame::OnOpenFile(wxCommandEvent &event)
 {
-    wxFileDialog openFileDialog(this, "ファイルを開く", "", "");
+    wxFileDialog openFileDialog(this, "Open file", "", "");
     if (openFileDialog.ShowModal() == wxID_CANCEL)
     {
         return;
