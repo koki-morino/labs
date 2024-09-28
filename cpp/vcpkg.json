@@ -1,0 +1,12 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "builtin-baseline": "1318ab14aae14db20085441cd71366891a9c9d0c",
+  "dependencies": [
+    {
+      "name": "wxwidgets",
+      "features": [
+        "fonts"
+      ]
+    }
+  ]
+}

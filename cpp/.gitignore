@@ -1,13 +1,10 @@
-# C/C++
-**/*.o
-**/out
+# VSCode
+**/.vscode/*
+!**/.vscode/c_cpp_properties.json
+!**/.vscode/extensions.json
 
-# Windows
-**/*.exe
-**/*.dll
+# Visual Studio
+**/.vs/
 
-# SPIR-V
-**/*.spv
-
-# Assembly
-**/*.bin
+# vcpkg
+**/vcpkg_installed/

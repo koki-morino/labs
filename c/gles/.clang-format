@@ -1,0 +1,12 @@
+BasedOnStyle: Google
+
+AccessModifierOffset: 0
+AlignEscapedNewlines: Left
+AllowShortFunctionsOnASingleLine: Empty
+BreakBeforeBraces: Allman
+ColumnLimit: 80
+IndentAccessModifiers: true
+IndentExternBlock: NoIndent
+IndentWidth: 4
+InsertNewlineAtEOF: true
+PointerAlignment: Right

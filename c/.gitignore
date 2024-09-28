@@ -1,0 +1,13 @@
+# C/C++
+**/*.o
+**/out
+
+# Windows
+**/*.exe
+**/*.dll
+
+# SPIR-V
+**/*.spv
+
+# Assembly
+**/*.bin
