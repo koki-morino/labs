@@ -1,3 +1,15 @@
 [workspace]
 resolver = "2"
-members = ["mytcp", "mygpu"]
+members = ["mytcp", "mygpu", "mytui"]
+
+[profile.dev]
+panic = 'unwind'
+
+[profile.release]
+codegen-units = 1
+debug = false
+lto = "fat"
+opt-level = 3
+# "unwind" may be better in the case of library.
+panic = 'abort'
+strip = "symbols"
