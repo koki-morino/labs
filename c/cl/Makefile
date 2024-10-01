@@ -5,7 +5,7 @@ LIBS=$(shell pkg-config --libs opencl)
 SRCS=$(wildcard *.c)
 OBJS=$(patsubst %.c, %.o, $(SRCS))
 
-EXE = hgp
+EXE = cl
 
 .PHONY: clean all
 

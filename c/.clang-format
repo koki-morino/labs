@@ -2,10 +2,9 @@ BasedOnStyle: Google
 
 AccessModifierOffset: 0
 AlignEscapedNewlines: Left
-AllowShortFunctionsOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: None
 BreakBeforeBraces: Allman
 ColumnLimit: 80
-IndentAccessModifiers: true
 IndentExternBlock: NoIndent
 IndentWidth: 4
 InsertNewlineAtEOF: true
