@@ -3,11 +3,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#define TRUE 1
-#define FALSE 0
-
-#define STRINGIFY(x) #x
-#define STR(x) STRINGIFY(x)
+#include "defs.h"
 
 #define GL_MAJOR_VER_NEED 3
 #define GL_MINOR_VER_NEED 3
