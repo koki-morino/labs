@@ -3,6 +3,7 @@ BasedOnStyle: Google
 AccessModifierOffset: 0
 AlignEscapedNewlines: Left
 AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: Never
 BreakBeforeBraces: Allman
 ColumnLimit: 80
 IndentExternBlock: NoIndent

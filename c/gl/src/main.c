@@ -4,6 +4,7 @@
 #include <unistd.h>
 
 #include "defs.h"
+#include "shader.h"
 
 #define GL_MAJOR_VER_NEED 3
 #define GL_MINOR_VER_NEED 3
@@ -19,6 +20,8 @@ int main(int argc, char *argv[])
     SDL_Event event;
     int GL_major_ver;
     int GL_minor_ver;
+    GLuint vertex_shader = 0;
+    GLuint fragment_shader = 0;
     int exit_code = EXIT_SUCCESS;
 
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
@@ -79,6 +82,22 @@ int main(int argc, char *argv[])
     // One means VSync
     SDL_GL_SetSwapInterval(1);
 
+    create_shader(GL_VERTEX_SHADER, "", &vertex_shader);
+    if (vertex_shader == 0)
+    {
+        printf("Failed to create vertex shader.\n");
+        exit_code = EXIT_FAILURE;
+        goto cleanup;
+    }
+
+    create_shader(GL_FRAGMENT_SHADER, "", &fragment_shader);
+    if (fragment_shader == 0)
+    {
+        printf("Failed to create fragment shader.\n");
+        exit_code = EXIT_FAILURE;
+        goto cleanup;
+    }
+
     while (TRUE)
     {
         glClearColor(1.f, 1.f, 1.f, 1.f);
@@ -93,16 +112,18 @@ int main(int argc, char *argv[])
     }
 
 cleanup:
+    if (vertex_shader != 0)
+        glDeleteShader(vertex_shader);
+
+    if (fragment_shader != 0)
+        glDeleteShader(fragment_shader);
+
     if (GL_ctx)
-    {
         SDL_GL_DeleteContext(GL_ctx);
-        GL_ctx = NULL;
-    }
+
     if (win)
-    {
         SDL_DestroyWindow(win);
-        win = NULL;
-    }
+
     SDL_Quit();
 
     return exit_code;
