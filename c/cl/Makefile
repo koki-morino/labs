@@ -1,6 +1,6 @@
 CC=gcc
-CFLAGS=-g -O0 $(shell pkg-config --cflags opencl)
-LIBS=$(shell pkg-config --libs opencl)
+CFLAGS=-g -O0 $(shell pkg-config --cflags OpenCL)
+LIBS=$(shell pkg-config --libs OpenCL)
 
 SRCS=$(wildcard *.c)
 OBJS=$(patsubst %.c, %.o, $(SRCS))
@@ -9,7 +9,7 @@ EXE = cl
 
 .PHONY: clean all
 
-all: $(EXE) $(SHADER)
+all: $(EXE)
 
 $(EXE): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
