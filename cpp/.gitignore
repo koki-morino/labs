@@ -2,7 +2,6 @@
 .vs/
 
 # vcpkg
-vcpkg/
 **/vcpkg_installed/
 
 # CMake

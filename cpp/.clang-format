@@ -1,11 +1,11 @@
 BasedOnStyle: Google
 
-AccessModifierOffset: 0
+AccessModifierOffset: -4
 AlignEscapedNewlines: Left
 AllowShortFunctionsOnASingleLine: Empty
-BreakBeforeBraces: Allman
+BreakBeforeBraces: Attach
 ColumnLimit: 80
-IndentAccessModifiers: true
+IndentAccessModifiers: false
 IndentExternBlock: NoIndent
 IndentWidth: 4
 InsertNewlineAtEOF: true
