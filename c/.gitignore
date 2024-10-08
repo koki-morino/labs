@@ -1,10 +1,11 @@
 # C/C++
+**/dist/
+**/out/
 **/*.o
-**/out
 
 # Windows
-**/*.exe
 **/*.dll
+**/*.exe
 
 # SPIR-V
 **/*.spv

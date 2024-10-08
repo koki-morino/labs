@@ -1,5 +1,11 @@
 #include "font.h"
 
+#include <fontconfig/fontconfig.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+#define FONT_MAX_ITERATION 5
+
 void font_list(void)
 {
     FcConfig* conf = FcInitLoadConfigAndFonts();
@@ -15,7 +21,7 @@ void font_list(void)
     }
 
     printf("Number of fonts: %d\n", font_set->nfont);
-    for (int i = 0; i < font_set->nfont; ++i)
+    for (int i = 0; i < font_set->nfont && i < FONT_MAX_ITERATION; ++i)
     {
         FcPattern* font = font_set->fonts[i];
         FcChar8 *file, *style, *family;
@@ -28,4 +34,7 @@ void font_list(void)
     }
 
     FcFontSetDestroy(font_set);
+    FcObjectSetDestroy(object_set);
+    FcPatternDestroy(pattern);
+    FcConfigDestroy(conf);
 }

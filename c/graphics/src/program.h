@@ -6,7 +6,7 @@ extern "C"
 {
 #endif
 
-#include <epoxy/gl.h>
+#include <GLES2/gl2.h>
 
 void create_program(GLuint *program);
 

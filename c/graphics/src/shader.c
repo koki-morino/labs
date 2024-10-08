@@ -1,4 +1,4 @@
-#include <epoxy/gl.h>
+#include <GLES2/gl2.h>
 #include <errno.h>
 #include <limits.h>
 #include <stdio.h>
