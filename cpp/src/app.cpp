@@ -2,8 +2,7 @@
 
 #include "frame.h"
 
-bool App::OnInit()
-{
+bool App::OnInit() {
     // Dark theme on Windows would be added at version 3.3.0.
     // There's no way to use it so far.
 

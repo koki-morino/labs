@@ -1,5 +1,5 @@
-#ifndef MY_FRAME_H
-#define MY_FRAME_H
+#ifndef FRAME_H
+#define FRAME_H
 
 #include <wx/filedlg.h>
 #include <wx/notebook.h>
@@ -8,8 +8,7 @@
 
 #include "defs.h"
 
-enum
-{
+enum {
     ID_CREATE_FILE = 1,
     ID_OPEN_FILE = 2,
     ID_SAVE_FILE = 3,
@@ -17,23 +16,22 @@ enum
     ID_LICENSES = 5,
 };
 
-class MainFrame : public wxFrame
-{
-    public:
-        MainFrame(const wxString &title);
+class MainFrame : public wxFrame {
+public:
+    MainFrame(const wxString &title);
 
-    private:
-        /**
-         * This should be executed right before terminating an application.
-         */
-        void OnClose(wxCloseEvent &event);
-        void OnExit(wxCommandEvent &event);
-        void OnCreateFile(wxCommandEvent &event);
-        void OnOpenFile(wxCommandEvent &event);
-        void OnSaveFile(wxCommandEvent &event);
-        void OnDatabaseConnections(wxCommandEvent &event);
-        void OnLicenses(wxCommandEvent &event);
-        void OnAbout(wxCommandEvent &event);
+private:
+    /**
+     * This should be executed right before terminating an application.
+     */
+    void OnClose(wxCloseEvent &event);
+    void OnExit(wxCommandEvent &event);
+    void OnCreateFile(wxCommandEvent &event);
+    void OnOpenFile(wxCommandEvent &event);
+    void OnSaveFile(wxCommandEvent &event);
+    void OnDatabaseConnections(wxCommandEvent &event);
+    void OnLicenses(wxCommandEvent &event);
+    void OnAbout(wxCommandEvent &event);
 };
 
 #endif

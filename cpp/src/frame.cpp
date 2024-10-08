@@ -1,10 +1,10 @@
 #include "frame.h"
 
 // A parent widget takes care of its all children.
-// Do NOT manually delete the memory allocations.
+// Do NOT manually free the memory allocations.
 
-MainFrame::MainFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title)
-{
+MainFrame::MainFrame(const wxString &title)
+    : wxFrame(nullptr, wxID_ANY, title) {
     this->Bind(wxEVT_CLOSE_WINDOW, &MainFrame::OnClose, this);
 
     wxMenu *menuFile = new wxMenu;
@@ -68,28 +68,23 @@ MainFrame::MainFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title)
 
     CreateStatusBar(3);
 }
-void MainFrame::OnClose(wxCloseEvent &event)
-{
+void MainFrame::OnClose(wxCloseEvent &event) {
     event.Skip();
 }
-void MainFrame::OnExit(wxCommandEvent &event)
-{
+void MainFrame::OnExit(wxCommandEvent &event) {
     Close(true);
 }
 
-void MainFrame::OnAbout(wxCommandEvent &event)
-{
+void MainFrame::OnAbout(wxCommandEvent &event) {
     wxMessageBox("Version: 1.0.0", APP_NAME "について",
                  wxOK | wxICON_INFORMATION);
 }
 
 void MainFrame::OnCreateFile(wxCommandEvent &event) {}
 
-void MainFrame::OnOpenFile(wxCommandEvent &event)
-{
+void MainFrame::OnOpenFile(wxCommandEvent &event) {
     wxFileDialog openFileDialog(this, "Open file", "", "");
-    if (openFileDialog.ShowModal() == wxID_CANCEL)
-    {
+    if (openFileDialog.ShowModal() == wxID_CANCEL) {
         return;
     }
 }
