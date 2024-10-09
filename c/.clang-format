@@ -6,6 +6,7 @@ AllowShortFunctionsOnASingleLine: None
 AllowShortIfStatementsOnASingleLine: Never
 BreakBeforeBraces: Allman
 ColumnLimit: 80
+DerivePointerAlignment: false
 IndentExternBlock: NoIndent
 IndentWidth: 4
 InsertNewlineAtEOF: true

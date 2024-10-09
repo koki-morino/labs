@@ -6,7 +6,7 @@
 
 #include "defs.h"
 
-void create_shader(GLenum type, const char *path, GLuint *shader)
+void shader_create(GLenum type, const char *path, GLuint *shader)
 {
     FILE *f = NULL;
     size_t size;

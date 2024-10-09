@@ -1,40 +1,63 @@
 #include "font.h"
 
 #include <fontconfig/fontconfig.h>
+#include <ft2build.h>
+#include FT_FREETYPE_H
 #include <stdio.h>
 #include <stdlib.h>
 
-#define FONT_MAX_ITERATION 5
-
-void font_list(void)
+void font_get_path(char **path)
 {
-    FcConfig* conf = FcInitLoadConfigAndFonts();
-    FcPattern* pattern = FcPatternCreate();
-    FcObjectSet* object_set =
-        FcObjectSetBuild(FC_FAMILY, FC_STYLE, FC_LANG, FC_FILE, (char*)0);
-    FcFontSet* font_set = FcFontList(conf, pattern, object_set);
+    FcConfig *conf = NULL;
+    FcPattern *pat = NULL;
+    FcPattern *match = NULL;
+    FcChar8 *fontfile = NULL;
+    FcResult result;
 
-    if (!font_set)
+    *path = NULL;
+
+    conf = FcInitLoadConfigAndFonts();
+    if (!conf)
     {
-        fprintf(stderr, "Failed to list fonts\n");
-        return;
+        printf("Failed to load fonts\n");
+        goto cleanup;
     }
 
-    printf("Number of fonts: %d\n", font_set->nfont);
-    for (int i = 0; i < font_set->nfont && i < FONT_MAX_ITERATION; ++i)
+    pat = FcPatternBuild(0, FC_LANG, FcTypeString, "ja", (char *)0);
+    if (!pat)
     {
-        FcPattern* font = font_set->fonts[i];
-        FcChar8 *file, *style, *family;
-        if (FcPatternGetString(font, FC_FILE, 0, &file) == FcResultMatch &&
-            FcPatternGetString(font, FC_STYLE, 0, &style) == FcResultMatch &&
-            FcPatternGetString(font, FC_FAMILY, 0, &family) == FcResultMatch)
-            printf("%s (%s, %s)\n", file, family, style);
-        {
-        }
+        printf("Failed to create font pattern\n");
+        goto cleanup;
     }
 
-    FcFontSetDestroy(font_set);
-    FcObjectSetDestroy(object_set);
-    FcPatternDestroy(pattern);
-    FcConfigDestroy(conf);
+    if (FcConfigSubstitute(conf, pat, FcMatchPattern) == FcFalse)
+    {
+        printf("Failed to substitute pattern\n");
+        goto cleanup;
+    }
+
+    FcDefaultSubstitute(pat);
+
+    match = FcFontMatch(conf, pat, &result);
+    if (!match)
+    {
+        printf("Failed to match font\n");
+        goto cleanup;
+    }
+
+    if (FcPatternGetString(match, FC_FILE, 0, &fontfile) != FcResultMatch)
+    {
+        printf("Failed to get pattern string\n");
+        goto cleanup;
+    }
+
+    *path = (char *)FcStrCopy(fontfile);
+
+cleanup:
+    if (match)
+        FcPatternDestroy(match);
+    if (pat)
+        FcPatternDestroy(pat);
+    if (conf)
+        FcConfigDestroy(conf);
 }

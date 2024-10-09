@@ -11,7 +11,7 @@ extern "C"
 /**
  * Assign 0 to shader on failure.
  */
-void create_shader(GLenum type, const char *path, GLuint *shader);
+void shader_create(GLenum type, const char *path, GLuint *shader);
 
 #ifdef __cplusplus
 }

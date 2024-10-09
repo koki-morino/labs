@@ -8,7 +8,7 @@ extern "C"
 
 #include <GLES2/gl2.h>
 
-void create_program(GLuint *program);
+void program_create(GLuint *program);
 
 #ifdef __cplusplus
 }

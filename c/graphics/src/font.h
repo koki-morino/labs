@@ -6,7 +6,7 @@ extern "C"
 {
 #endif
 
-void font_list(void);
+void font_get_path(char **path);
 
 #ifdef __cplusplus
 }

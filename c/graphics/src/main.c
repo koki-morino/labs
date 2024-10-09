@@ -24,15 +24,21 @@ int main(int argc, char *argv[])
     int GL_minor_ver;
     GLuint vertex_shader = 0;
     GLuint fragment_shader = 0;
-    int exit_code = EXIT_SUCCESS;
+    char *font_path = NULL;
+    int exit_code = EXIT_FAILURE;
 
-    // Test font listing.
-    font_list();
+    font_get_path(&font_path);
+    if (!font_path)
+    {
+        printf("Failed to get font path\n");
+        goto cleanup;
+    }
+
+    printf("Font: %s\n", font_path);
 
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
     {
         printf("Failed to initialize SDL: %s\n", SDL_GetError());
-        exit_code = EXIT_FAILURE;
         goto cleanup;
     }
 
@@ -48,7 +54,6 @@ int main(int argc, char *argv[])
     if (!win)
     {
         printf("Failed to create window: %s\n", SDL_GetError());
-        exit_code = EXIT_FAILURE;
         goto cleanup;
     }
 
@@ -56,14 +61,12 @@ int main(int argc, char *argv[])
     if (!GL_ctx)
     {
         printf("Failed to create " GL_VARIANT " context: %s\n", SDL_GetError());
-        exit_code = EXIT_FAILURE;
         goto cleanup;
     }
 
     if (SDL_GL_GetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, &GL_major_ver))
     {
         printf("Failed to get OpenGL major version: %s\n", SDL_GetError());
-        exit_code = EXIT_FAILURE;
         goto cleanup;
     }
 
@@ -71,7 +74,6 @@ int main(int argc, char *argv[])
     {
         printf("Failed to get " GL_VARIANT " minor version: %s\n",
                SDL_GetError());
-        exit_code = EXIT_FAILURE;
         goto cleanup;
     }
 
@@ -82,28 +84,25 @@ int main(int argc, char *argv[])
                "actual: %d.%d\n",
                GL_MAJOR_VER_NEED, GL_MINOR_VER_NEED, GL_major_ver,
                GL_minor_ver);
-        exit_code = EXIT_FAILURE;
         goto cleanup;
     }
-    else
-        printf(GL_VARIANT " version %d.%d\n", GL_major_ver, GL_minor_ver);
+
+    printf(GL_VARIANT " version: %d.%d\n", GL_major_ver, GL_minor_ver);
 
     // One means VSync
     SDL_GL_SetSwapInterval(1);
 
-    create_shader(GL_VERTEX_SHADER, "", &vertex_shader);
+    shader_create(GL_VERTEX_SHADER, "", &vertex_shader);
     if (vertex_shader == 0)
     {
-        printf("Failed to create vertex shader.\n");
-        exit_code = EXIT_FAILURE;
+        printf("Failed to create vertex shader\n");
         goto cleanup;
     }
 
-    create_shader(GL_FRAGMENT_SHADER, "", &fragment_shader);
+    shader_create(GL_FRAGMENT_SHADER, "", &fragment_shader);
     if (fragment_shader == 0)
     {
-        printf("Failed to create fragment shader.\n");
-        exit_code = EXIT_FAILURE;
+        printf("Failed to create fragment shader\n");
         goto cleanup;
     }
 
@@ -120,6 +119,8 @@ int main(int argc, char *argv[])
         }
     }
 
+    exit_code = EXIT_SUCCESS;
+
 cleanup:
     if (vertex_shader != 0)
         glDeleteShader(vertex_shader);
@@ -134,6 +135,9 @@ cleanup:
         SDL_DestroyWindow(win);
 
     SDL_Quit();
+
+    if (font_path)
+        free(font_path);
 
     return exit_code;
 }
