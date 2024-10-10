@@ -5,8 +5,8 @@ AlignEscapedNewlines: Left
 AllowShortFunctionsOnASingleLine: Empty
 BreakBeforeBraces: Attach
 ColumnLimit: 80
+DerivePointerAlignment: false
 IndentAccessModifiers: false
 IndentExternBlock: NoIndent
 IndentWidth: 4
-InsertNewlineAtEOF: true
 PointerAlignment: Right
