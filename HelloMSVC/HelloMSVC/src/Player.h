@@ -6,5 +6,9 @@
 class Player : public Entity
 {
   public:
-    std::string getName() override;
+    Player(const std::string &name);
+    const char *const getName() const override;
+    void setName(const std::string &name) override;
+    const Position *const getPosition() override;
+    void setPosition(const Position &position) override;
 };

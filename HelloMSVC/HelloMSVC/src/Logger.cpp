@@ -2,12 +2,21 @@
 
 #include <iostream>
 
-void Logger::setLevel(Level level)
+Logger::Logger() : level(Info)
+{
+}
+
+Logger::Logger(Level level) : level(level)
+{
+}
+
+void Logger::setLevel(const Level level)
 {
     this->level = level;
 }
 
-void Logger::logDebug(std::string x)
+void Logger::logDebug(const std::string &x) const
 {
-    std::cout << "[DEBUG] " << x << std::endl;
+    if (this->level >= Logger::Debug)
+        std::cout << "[DEBUG] " << x << std::endl;
 }

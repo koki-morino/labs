@@ -1,14 +1,9 @@
 #include "Entity.h"
 
-#include <string>
-
-void Entity::move(float x, float y)
+Entity::Entity(const std::string &name) : name(name), position(Position()), speed(0)
 {
-    this->x = x;
-    this->y = y;
 }
 
-std::string Entity::getName()
+Entity::Entity(const std::string &name, const Position position) : name(name), position(position), speed(0)
 {
-    return "Entity";
 }

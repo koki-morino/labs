@@ -9,4 +9,5 @@ DerivePointerAlignment: false
 IndentAccessModifiers: false
 IndentExternBlock: NoIndent
 IndentWidth: 4
+LineEnding: LF
 PointerAlignment: Right

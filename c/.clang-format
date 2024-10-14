@@ -18,4 +18,5 @@ ColumnLimit: 80
 DerivePointerAlignment: false
 IndentExternBlock: NoIndent
 IndentWidth: 4
+LineEnding: LF
 PointerAlignment: Right

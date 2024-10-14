@@ -13,10 +13,13 @@ class Logger final
         Debug,
     };
 
-    void setLevel(Level level);
-
-    void logDebug(std::string x);
-
   private:
-    Level level = Info;
+    Level level;
+
+  public:
+    Logger();
+    Logger(const Logger &logger) = delete;
+    explicit Logger(Level level);
+    void setLevel(const Level level);
+    void logDebug(const std::string &x) const;
 };
