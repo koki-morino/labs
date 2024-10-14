@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["mytcp", "mygpu", "mytui"]
+members = ["mytcp"]
 
 [profile.dev]
 panic = 'unwind'
