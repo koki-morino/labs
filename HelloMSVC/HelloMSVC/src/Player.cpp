@@ -1,7 +1,5 @@
 #include "Player.h"
 
-#include <string>
-
 Player::Player(const std::string &name) : Entity(name)
 {
 }
