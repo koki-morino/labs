@@ -1,1 +1,1 @@
-https://marabos.nl/atomics/
+https://marabos.nl/atomics

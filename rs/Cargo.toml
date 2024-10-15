@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["mytcp"]
+members = ["crates/mybgp"]
 
 [profile.dev]
 panic = 'unwind'
